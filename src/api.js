@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// for prod use https://faucetbot.emmanuelshiba.com/api
 const api = axios.create({
 	baseURL: "http://localhost:8002/api",
 	withCredentials: true,
