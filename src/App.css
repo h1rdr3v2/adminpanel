@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+body {
+	height: 100vh;
+}
+
+div#root,
+.home-container {
+	height: 100%;
+}
+
+.login-container,
+.select-container,
+.cs-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f1f1f1;
+}
+
+.form-container,
+.bot-container {
+	width: 500px;
+	max-width: 90vw;
+}
+.loginTitle {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.alert {
+	margin-bottom: 20px;
+}
+.bot-cards {
+	display: flex;
+	justify-content: space-between;
+}
+.texts-container {
+	padding: 20px;
+}
+.texts-container .ant-typography {
+	margin-bottom: 16px;
+}
+
+.texts-container .ant-input {
+	margin-bottom: 16px;
+}
+
+.texts-container .ant-btn {
+	margin-top: 16px;
+}
