@@ -1,24 +1,22 @@
-/* eslint-disable react/prop-types */
-import { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie'
+import { createContext, useContext, useState } from 'react';
+import Cookies from 'js-cookie';
+
 const AuthContext = createContext();
 
-
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    const storedData = JSON.parse(Cookies.get('loggedIn'));
-    return !!storedData;
+    const storedData = Cookies.get('loggedIn');
+    return storedData ? JSON.parse(storedData) : false;
   });
 
-  useEffect(() => {}, []);
-
   const login = () => {
-    Cookies.set('loggedIn', JSON.stringify(true) , {expires: 1})
+    Cookies.set('loggedIn', JSON.stringify(true), { expires: 1 });
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    Cookies.remove('loggedIn')
+    Cookies.remove('loggedIn');
     setIsAuthenticated(false);
   };
 
