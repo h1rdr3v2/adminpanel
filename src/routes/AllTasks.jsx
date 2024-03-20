@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { Form, Switch, Spin, Table, Typography } from "antd";
-import { useBot } from "../contexts/BotContext";
+import React, { useState } from 'react';
+import { Form, Switch, Spin, Table, Typography } from 'antd';
+import { useBot } from '../contexts/BotContext';
 
 const { Title } = Typography;
 
 const AllTasks = () => {
-	const { currentBot } = useBot();
+  const { currentBot } = useBot();
 
-	if (!currentBot) {
-		return <div></div>;
-	}
+  if (!currentBot) {
+    return <div></div>;
+  }
 
-	return (
-		<div>
-			<Title level={2} style={{ marginBottom: 0 }}>
-				All Tasks
-			</Title>
-			{/* <Spin spinning={loading}>
+  return (
+    <div>
+      <Title level={2} style={{ marginBottom: 0 }}>
+        All Tasks
+      </Title>
+      {/* <Spin spinning={loading}>
 				
 			</Spin> */}
-		</div>
-	);
+    </div>
+  );
 };
 
 export default AllTasks;

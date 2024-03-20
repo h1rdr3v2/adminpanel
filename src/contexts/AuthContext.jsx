@@ -1,37 +1,33 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-
+/* eslint-disable react/prop-types */
+import { createContext, useContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie'
 const AuthContext = createContext();
 
+
 export const AuthProvider = ({ children }) => {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const storedData = JSON.parse(localStorage.getItem("loggedIn"));
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const storedData = JSON.parse(Cookies.get('loggedIn'));
+    return !!storedData;
+  });
 
-	useEffect(() => {
-		if (storedData) {
-			setIsAuthenticated(true);
-		}
-	}, []);
+  useEffect(() => {}, []);
 
-	const login = () => {
-		localStorage.setItem("loggedIn", "true");
-		setIsAuthenticated(true);
-	};
+  const login = () => {
+    Cookies.set('loggedIn', JSON.stringify(true) , {expires: 1})
+    setIsAuthenticated(true);
+  };
 
-	const logout = () => {
-		localStorage.removeItem("loggedIn");
-		setIsAuthenticated(false);
-	};
-	return (
-		<AuthContext.Provider
-			value={{
-				isAuthenticated,
-				login,
-				logout,
-			}}
-		>
-			{children}
-		</AuthContext.Provider>
-	);
+  const logout = () => {
+    Cookies.remove('loggedIn')
+    setIsAuthenticated(false);
+  };
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
