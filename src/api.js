@@ -4,7 +4,7 @@ const prod = ' https://faucetbot.emmanuelshiba.com/api';
 const api = axios.create({
   baseURL: prod,
   withCredentials: true,
-  timeout: 1000,
+  timeout: 10000,
   timeoutErrorMessage: 'Request time out, please try again',
 });
 
